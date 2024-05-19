@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+    - docker build -t elzette/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true elzette/docker-react npm run test
